@@ -27,12 +27,16 @@ try:
                 text = recognizer.recognize_google(audio)
                 print("Heard:", text)
 
-                # Immediately write the recognized text to script.txt
+                # Write recognized text to script.txt
                 with open("script.txt", "a") as file:
                     file.write(text + "\n")
 
             except sr.UnknownValueError:
-                print("Didn't catch that.")
+                # Silence detected, write "..." to script.txt
+                print("Silence detected.")
+                with open("script.txt", "a") as file:
+                    file.write("...\n")
+
             except sr.RequestError as e:
                 print(f"API error: {e}")
 except KeyboardInterrupt:
