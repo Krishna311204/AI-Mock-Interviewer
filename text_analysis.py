@@ -1,5 +1,3 @@
-# ultra_sensitive_sentiment_analyzer.py
-
 from textblob import TextBlob
 import re
 
